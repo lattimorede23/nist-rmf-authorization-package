@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Document Classification** | Unclassified // FOUO |
+| **Document Marking** | CUI (simulated marking: this public portfolio document is fictional and contains no actual CUI) |
 | **System Name** | Tactical Data Processing Workstation (TDPW-1) |
 | **System Owner** | 88th Air Base Wing (88 ABW), Wright-Patterson Air Force Base, Dayton, OH |
 | **Assessment Type** | Full Security Control Assessment in support of Initial ATO |
@@ -20,7 +20,7 @@
 
 ## 1. Assessment Scope
 
-This Security Control Assessment (SCA) evaluated a representative subset of the NIST SP 800-53 Rev 5 Moderate baseline controls implemented on TDPW-1, a standalone Windows 11 Enterprise workstation operated by the 88th Air Base Wing at Wright-Patterson AFB. The assessment was conducted in support of the system's initial Authorization to Operate (ATO) decision under NIST SP 800-37 Rev 2, Step 4 (Assess), and in accordance with AFI 17-101.
+This Security Control Assessment (SCA) evaluated a representative subset of the NIST SP 800-53 Rev 5 Moderate baseline controls implemented on TDPW-1, a standalone Windows 11 Enterprise workstation operated by the 88th Air Base Wing at Wright-Patterson AFB. The assessment was conducted in support of the system's initial Authorization to Operate (ATO) decision under NIST SP 800-37 Rev 2, Step 4 (Assess), and in accordance with DAFI 17-101.
 
 The scope of this assessment includes 10 controls selected from the TDPW-1 System Security Plan (SSP), spanning the Access Control (AC), Audit and Accountability (AU), Configuration Management (CM), Identification and Authentication (IA), System and Communications Protection (SC), and System and Information Integrity (SI) families. Controls were selected to provide representative coverage across all six families and to prioritize controls with elevated risk given the system's standalone, non-networked architecture.
 
@@ -52,7 +52,7 @@ Assessment results are reported using the SP 800-53A finding categories of **Sat
 | 6 | AU-8 | Time Stamps | Examine, Test | System clock accurately reflects an authoritative time source, supporting reliable audit log correlation. | System clock found to have drifted approximately 6 minutes from the authoritative reference time at time of testing; manual synchronization process is in place but had not been performed within the expected interval. | **Other Than Satisfied** |
 | 7 | CM-6 | Configuration Settings | Test | System configuration settings comply with the DISA Windows 11 STIG baseline with no open findings. | SCAP compliance scan identified 6 open STIG findings (e.g., PowerShell script block logging not fully enabled, WinRM service not disabled, SMBv1 client removal unconfirmed); baseline substantially but not fully compliant. | **Other Than Satisfied** |
 | 8 | IA-2 | Identification and Authentication (Organizational Users) | Examine, Interview | Users are uniquely identified and authenticated, ideally leveraging DoD-standard multi-factor authentication (CAC/PKI). | Unique username/password authentication confirmed for all users; however, no CAC/PKI-based multi-factor authentication capability exists due to the system's standalone architecture, representing a deviation from DoD MFA requirements. | **Other Than Satisfied** |
-| 9 | SC-28 | Protection of Information at Rest | Examine, Test | Fixed disk and approved removable media are encrypted to protect SBU data at rest. | BitLocker confirmed enabled and TPM-backed on the system drive; sampled removable media confirmed to be hardware-encrypted per media control SOP. | **Satisfied** |
+| 9 | SC-28 | Protection of Information at Rest | Examine, Test | Fixed disk and approved removable media are encrypted to protect CUI data at rest. | BitLocker confirmed enabled and TPM-backed on the system drive; sampled removable media confirmed to be hardware-encrypted per media control SOP. | **Satisfied** |
 | 10 | SI-2 | Flaw Remediation | Examine, Interview | Security patches are applied within DoD-required timelines for the severity of identified vulnerabilities. | Patch application confirmed via offline media on a monthly cadence; review of patch records showed High-severity vulnerability patches were applied outside the 30-day DoD remediation requirement due to the offline update process. | **Other Than Satisfied** |
 
 ---
@@ -69,8 +69,8 @@ None of the identified weaknesses were assessed as High-severity system-level fa
 
 ## 5. Assessor Statement
 
-This assessment was conducted independently by the designated Security Control Assessor, who has no responsibility for the operation or day-to-day management of TDPW-1, in accordance with the independence requirements of NIST SP 800-37 Rev 2 and AFI 17-101. Results were briefed to the ISSM and ISSO on 19 June 2026 and will be forwarded to the AO as part of the authorization package.
+This assessment was conducted independently by the designated Security Control Assessor, who has no responsibility for the operation or day-to-day management of TDPW-1, in accordance with the independence requirements of NIST SP 800-37 Rev 2 and DAFI 17-101. Results were briefed to the ISSM and ISSO on 19 June 2026 and will be forwarded to the AO as part of the authorization package.
 
 ---
 
-*Prepared in accordance with NIST SP 800-53A, NIST SP 800-37 Rev 2, and AFI 17-101. This document is a fictional artifact for cybersecurity portfolio and training purposes only.*
+*Prepared in accordance with NIST SP 800-53A, NIST SP 800-37 Rev 2, and DAFI 17-101. This document is a fictional artifact for cybersecurity portfolio and training purposes only.*
