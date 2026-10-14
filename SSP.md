@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Document Classification** | Unclassified // FOUO |
+| **Document Marking** | CUI (simulated marking: this public portfolio document is fictional and contains no actual CUI) |
 | **System Name** | Tactical Data Processing Workstation (TDPW-1) |
 | **System Owner** | 88th Air Base Wing (88 ABW), Wright-Patterson Air Force Base, Dayton, OH |
 | **RMF Step** | Step 2 — Select; Step 3 — Implement (SP 800-37 Rev 2) |
@@ -29,13 +29,13 @@
 | System Type | Standalone (non-networked, non-domain-joined) workstation |
 | Operational Status | Operational |
 | Security Categorization | Moderate (FIPS 199) |
-| Classification Level | Unclassified // For Official Use Only (FOUO) |
+| Classification Level | Unclassified; data handled as Controlled Unclassified Information (CUI) |
 | Authorization Type | Authorization to Operate (ATO) |
 | Authorizing Official (AO) | Fictional 88 ABW Designated Authorizing Official (DAO) |
 
 ### 1.1 Purpose
 
-TDPW-1 processes and stores Sensitive But Unclassified (SBU) operational and logistics data in direct support of base-level operations at Wright-Patterson AFB. The system supports 88 ABW mission partners by providing a dedicated, isolated environment for handling operational planning data, logistics tracking records, and installation support documentation that require protection beyond general unclassified handling but do not require classified processing.
+TDPW-1 processes and stores Controlled Unclassified Information (CUI) operational and logistics data in direct support of base-level operations at Wright-Patterson AFB. The system supports 88 ABW mission partners by providing a dedicated, isolated environment for handling operational planning data, logistics tracking records, and installation support documentation that require protection beyond general unclassified handling but do not require classified processing.
 
 ### 1.2 System Boundary
 
@@ -51,7 +51,7 @@ TDPW-1 is located within a controlled access facility (Building 262, Area B) tha
 
 ### 2.2 Technical Architecture
 
-TDPW-1 is a standalone Dell OptiPlex workstation running Windows 11 Enterprise (64-bit), configured per the applicable DISA Security Technical Implementation Guide (STIG) baseline for Windows 11. The system is **not domain-joined**; all account management is performed locally using local user accounts and Windows local security policy. The system has no network interface cards enabled at the OS level (Ethernet and Wi-Fi adapters are disabled in device manager and, where supported, disabled in UEFI/BIOS), eliminating network-based attack surface as an operational design decision consistent with its SBU processing mission.
+TDPW-1 is a standalone Dell OptiPlex workstation running Windows 11 Enterprise (64-bit), configured per the applicable DISA Security Technical Implementation Guide (STIG) baseline for Windows 11. The system is **not domain-joined**; all account management is performed locally using local user accounts and Windows local security policy. The system has no network interface cards enabled at the OS level (Ethernet and Wi-Fi adapters are disabled in device manager and, where supported, disabled in UEFI/BIOS), eliminating network-based attack surface as an operational design decision consistent with its CUI processing mission.
 
 Data enters and exits the system boundary only via:
 
@@ -68,9 +68,9 @@ TDPW-1 has **no external system interconnections**. There are no Interconnection
 
 | Data Type | Description | Sensitivity |
 |---|---|---|
-| Operational planning data | Base-level exercise and operations planning artifacts | SBU / FOUO |
-| Logistics tracking records | Supply and logistics status data supporting base operations | SBU / FOUO |
-| Installation support documentation | Facility and installation support records | SBU / FOUO |
+| Operational planning data | Base-level exercise and operations planning artifacts | CUI |
+| Logistics tracking records | Supply and logistics status data supporting base operations | CUI |
+| Installation support documentation | Facility and installation support records | CUI |
 
 No classified information, Personally Identifiable Information (PII) beyond that minimally necessary for logistics point-of-contact tracking, or Protected Health Information (PHI) is authorized for processing on TDPW-1.
 
@@ -82,7 +82,7 @@ In accordance with FIPS Publication 199 and NIST SP 800-60, the following provis
 
 | Security Objective | Provisional Impact | Final Impact | Rationale |
 |---|---|---|---|
-| Confidentiality | Moderate | **Moderate** | Unauthorized disclosure of SBU operational/logistics data could adversely affect base operations and mission partner activities. |
+| Confidentiality | Moderate | **Moderate** | Unauthorized disclosure of CUI operational/logistics data could adversely affect base operations and mission partner activities. |
 | Integrity | Moderate | **Moderate** | Unauthorized modification of logistics or planning data could degrade base support operations and decision-making. |
 | Availability | Low | **Moderate** | While the system is not mission-critical in real time, sustained unavailability would degrade the wing's logistics and planning support function; categorization was raised to Moderate at System Owner discretion to align the baseline uniformly. |
 
@@ -96,15 +96,15 @@ This categorization drives selection of the NIST SP 800-53 Rev 5 Moderate contro
 
 ### 4.1 Baseline
 
-TDPW-1 is assessed against the **NIST SP 800-53 Rev 5 Moderate baseline**, as required for a Moderate-categorized system under NIST SP 800-37 Rev 2 and consistent with Air Force implementation guidance in AFI 17-101, *Risk Management Framework (RMF) for Air Force Information Technology*.
+TDPW-1 is assessed against the **NIST SP 800-53 Rev 5 Moderate baseline**, as required for a Moderate-categorized system under NIST SP 800-37 Rev 2 and consistent with Air Force implementation guidance in DAFI 17-101 (formerly AFI 17-101), *Risk Management Framework (RMF) for Department of the Air Force Information Technology (IT)*.
 
 ### 4.2 Overlays Applied
 
-No specialized overlay (e.g., Classified, Privacy, Space Platform) applies to TDPW-1, as the system processes unclassified SBU data only and does not meet the criteria for the Privacy Overlay (no significant PII processing). A **Standalone/Non-Networked System tailoring profile** has been applied locally by the ISSM to reflect the system's isolated architecture.
+No specialized overlay (e.g., Classified, Privacy, Space Platform) applies to TDPW-1, as the system processes unclassified CUI only and does not meet the criteria for the Privacy Overlay (no significant PII processing). A **Standalone/Non-Networked System tailoring profile** has been applied locally by the ISSM to reflect the system's isolated architecture.
 
 ### 4.3 Tailoring Decisions
 
-The following control tailoring decisions were made and documented in accordance with AFI 17-101 and SP 800-53B guidance:
+The following control tailoring decisions were made and documented in accordance with DAFI 17-101 and SP 800-53B guidance:
 
 | Control | Tailoring Action | Justification |
 |---|---|---|
@@ -131,7 +131,7 @@ All tailoring decisions were reviewed and approved by the ISSM and documented fo
 | System Administrator | SSgt Devon T. Marsh | 88th Communications Squadron, Client Systems Flight |
 | Information Assurance Manager (IAM), Base-level | Ms. Karen J. O'Neal | 88th Air Base Wing, Wing Cybersecurity Office |
 
-Roles and responsibilities are assigned in accordance with AFI 17-101 and AFMAN 17-1301, *Computer Security (COMPUSEC)*. The ISSO is the primary day-to-day point of contact for TDPW-1 and is responsible for maintaining this SSP, coordinating assessments, and tracking the POA&M.
+Roles and responsibilities are assigned in accordance with DAFI 17-101 and AFMAN 17-1301, *Computer Security (COMPUSEC)*. The ISSO is the primary day-to-day point of contact for TDPW-1 and is responsible for maintaining this SSP, coordinating assessments, and tracking the POA&M.
 
 ---
 
@@ -204,7 +204,7 @@ The ISSO maintains a hardware and software inventory for TDPW-1, including make/
 ### 6.4 Identification and Authentication (IA)
 
 **IA-2 — Identification and Authentication (Organizational Users)**
-*Status: Implemented*
+*Status: Partially Implemented*
 All users authenticate with a unique local username and password prior to gaining access; shared accounts are prohibited by local policy. Multi-factor authentication via CAC is not technically feasible in the current standalone configuration (no domain controller or PKI middleware infrastructure); this is documented as a Moderate-baseline deviation and tracked as an open POA&M item (see Deliverable 2).
 
 **IA-5 — Authenticator Management**
@@ -219,7 +219,7 @@ As TDPW-1 has no network interface, traditional boundary protection mechanisms (
 
 **SC-28 — Protection of Information at Rest**
 *Status: Implemented*
-The system's fixed disk is encrypted using BitLocker with a TPM-backed key, protecting SBU data at rest in the event of workstation theft or unauthorized removal. Removable media approved for use with the system are also required to be hardware-encrypted per local media control SOP.
+The system's fixed disk is encrypted using BitLocker with a TPM-backed key, protecting CUI data at rest in the event of workstation theft or unauthorized removal. Removable media approved for use with the system are also required to be hardware-encrypted per local media control SOP.
 
 ### 6.6 System and Information Integrity (SI)
 
@@ -255,7 +255,7 @@ Given the absence of network connectivity, host-based monitoring is limited to l
 | CM-6 | Configuration Settings | CM | Partially Implemented |
 | CM-7 | Least Functionality | CM | Implemented |
 | CM-8 | System Component Inventory | CM | Implemented |
-| IA-2 | Identification and Authentication (Org. Users) | IA | Implemented |
+| IA-2 | Identification and Authentication (Org. Users) | IA | Partially Implemented |
 | IA-5 | Authenticator Management | IA | Implemented |
 | SC-7 | Boundary Protection | SC | Not Applicable / Compensating Control |
 | SC-28 | Protection of Information at Rest | SC | Implemented |
@@ -263,14 +263,14 @@ Given the absence of network connectivity, host-based monitoring is limited to l
 | SI-3 | Malicious Code Protection | SI | Implemented |
 | SI-4 | System Monitoring | SI | Partially Implemented |
 
-**Total controls documented: 20** (exceeds the 15-control minimum across all six required families: AC, AU, CM, IA, SC, SI)
+**Total controls documented: 21** across six families (AC, AU, CM, IA, SC, SI).
 
 ---
 
 ## 8. Authorization Recommendation
 
-Based on the implementation status summarized above and the open items tracked in the accompanying POA&M, the ISSM recommends TDPW-1 for an **Authorization to Operate (ATO)** with conditions, contingent on remediation of open POA&M findings within their scheduled completion dates. This recommendation will be forwarded to the AO for risk acceptance determination in accordance with NIST SP 800-37 Rev 2 Step 5 (Authorize) and AFI 17-101.
+Based on the implementation status summarized above and the open items tracked in the accompanying POA&M, the ISSM recommends TDPW-1 for an **Authorization to Operate (ATO)** with conditions, contingent on remediation of open POA&M findings within their scheduled completion dates. This recommendation will be forwarded to the AO for risk acceptance determination in accordance with NIST SP 800-37 Rev 2 Step 5 (Authorize) and DAFI 17-101.
 
 ---
 
-*This SSP is a living document and will be updated upon any significant change to TDPW-1's architecture, control implementation, or operating environment, and reviewed at minimum annually per AFI 17-101.*
+*This SSP is a living document and will be updated upon any significant change to TDPW-1's architecture, control implementation, or operating environment, and reviewed at minimum annually per DAFI 17-101.*

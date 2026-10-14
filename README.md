@@ -1,47 +1,87 @@
-# NIST RMF Authorization Package — Tactical Data Processing Workstation (TDPW-1)
+# NIST RMF Authorization Package: TDPW-1
 
-**A fictional Air Force RMF portfolio project | GRC / ISSO skills demonstration**
+A fictional Air Force authorization package written the way an ISSO or GRC analyst would prepare one. It includes a System Security Plan, a Security Control Assessment, and a Plan of Action and Milestones for a Moderate-impact standalone Windows 11 workstation, under NIST SP 800-37 Rev 2 and SP 800-53 Rev 5.
+
+**Everything here is fictional:** the system, the unit's use of it, the personnel, and the findings. Real organization names (88th Air Base Wing, Wright-Patterson AFB) provide realistic context only. No content describes a real Air Force program, system, or person.
 
 ---
 
-## About This Project
-
-This repository contains a complete, fictional NIST Risk Management Framework (RMF) authorization package built to demonstrate practical GRC (Governance, Risk, and Compliance) and ISSO (Information System Security Officer) documentation skills relevant to Department of Defense and Air Force cybersecurity roles.
-
-Everything in this repository — the system, the unit, the personnel, and the findings — is **fictional**. It was created as a training and portfolio exercise to practice producing authorization artifacts the way they would be developed for a real Air Force information system under NIST SP 800-37 Rev 2, using NIST SP 800-53 Rev 5 controls and Air Force implementation guidance such as AFI 17-101, *Risk Management Framework (RMF) for Air Force Information Technology*.
-
-No content in this repository describes a real Air Force program, system, or individual.
-
-## The Fictional System
-
-**Tactical Data Processing Workstation (TDPW-1)**
+## The fictional system
 
 | Attribute | Detail |
-|---|---|
-| System Owner | 88th Air Base Wing (88 ABW), Wright-Patterson Air Force Base, Dayton, OH |
-| Purpose | Processes and stores Sensitive But Unclassified (SBU) operational and logistics data supporting base operations |
-| Environment | Standalone Windows 11 Enterprise workstation, not domain-joined, located in a controlled access facility |
-| Classification | Unclassified // FOUO |
-| FIPS 199 Impact Level | Moderate |
-| Framework | NIST RMF (SP 800-37 Rev 2), controls from NIST SP 800-53 Rev 5 |
-| Authorizing Official | Fictional 88 ABW Designated Authorizing Official (DAO) |
+| :-- | :-- |
+| System | Tactical Data Processing Workstation (TDPW-1) |
+| System owner | 88th Air Base Wing (88 ABW), Wright-Patterson AFB, Dayton, OH |
+| Purpose | Processes and stores Controlled Unclassified Information (CUI): operational and logistics data supporting base operations |
+| Environment | Standalone Windows 11 Enterprise workstation, not networked or domain-joined, in a controlled-access facility |
+| FIPS 199 categorization | Moderate (C: Moderate, I: Moderate, A: raised from Low to Moderate) |
+| Framework | NIST RMF (SP 800-37 Rev 2), SP 800-53 Rev 5 Moderate baseline, SP 800-53A assessment procedures, DAFI 17-101 |
 
-TDPW-1 was designed as a realistic but simplified system: a single, non-networked workstation with a narrow data-processing mission. This keeps the authorization boundary small enough to fully document in a portfolio project while still requiring genuine RMF judgment calls — control tailoring for a standalone architecture, compensating controls in place of network-based protections, and realistic findings around patch management and multi-factor authentication on an air-gapped asset.
+A single, non-networked workstation keeps the authorization boundary small enough to document fully. It still forces real RMF judgment calls:
+
+- Tailoring controls out (AC-17, AC-4, CA-3) for a standalone architecture.
+- Compensating controls in place of network boundary protection.
+- Realistic findings around offline patching and multi-factor authentication on an air-gapped asset.
+
+---
 
 ## Deliverables
 
-| File | Description |
-|---|---|
-| [`SSP.md`](./SSP.md) | **System Security Plan** — system identification, environment/architecture, FIPS 199 categorization, applicable overlays and tailoring decisions, 20 documented NIST SP 800-53 Rev 5 controls across AC, AU, CM, IA, SC, and SI families, and assigned roles/POCs. |
-| [`POAM.md`](./POAM.md) | **Plan of Action and Milestones** — 7 open findings in table format, each with weakness ID, description, severity, responsible office, scheduled completion date, resources required, and current status. |
-| [`SCA.md`](./SCA.md) | **Security Control Assessment Summary** — assessment scope and SP 800-53A methodology, 10 controls tested with test method/expected/actual results and Satisfied / Other Than Satisfied findings, plus an overall assessment summary and authorization recommendation. |
+| Document | Contents |
+| :-- | :-- |
+| [`SSP.md`](SSP.md) | System Security Plan: identification, boundary, architecture, FIPS 199 categorization, overlays and tailoring decisions, roles, and **21 control implementation statements** across AC, AU, CM, IA, SC, and SI |
+| [`SCA.md`](SCA.md) | Security Control Assessment: scope, SP 800-53A methods (examine, interview, test), **10 controls tested** with expected and actual results, findings (6 Satisfied, 4 Other Than Satisfied), and an authorization recommendation |
+| [`POAM.md`](POAM.md) | Plan of Action and Milestones: **7 open weaknesses** (1 High, 4 Moderate, 2 Low), each with control, owner, scheduled completion, and resources |
 
-The three documents are cross-referenced: findings noted as "Partially Implemented" in the SSP are the same controls tested as "Other Than Satisfied" in the SCA, which in turn map to the corresponding weakness entries in the POA&M — mirroring how a real authorization package ties together across artifacts.
+---
 
-## Why This Project
+## Traceability across the package
 
-This package was built to demonstrate the ability to produce authorization-quality RMF documentation independently: correctly applying FIPS 199 categorization, selecting and tailoring an SP 800-53 control baseline, writing control implementation statements in assessor-ready language, and translating assessment results into a tracked POA&M. These are the core work products of an ISSO or GRC analyst supporting a DoD authorization effort.
+Every **Other Than Satisfied** finding in the SCA has a POA&M entry. The POA&M also tracks weaknesses found outside the SCA sample: the SI-4 monitoring gap, local admin password rotation, and removable-media log gaps.
+
+| Control | SSP status | SCA result | POA&M item | Severity |
+| :-- | :-- | :-- | :-- | :-- |
+| IA-2 | Partially Implemented | Other Than Satisfied | POAM-TDPW1-001: no MFA/CAC for local logon | High |
+| SI-2 | Partially Implemented | Other Than Satisfied | POAM-TDPW1-002: offline patch latency | Moderate |
+| CM-6 | Partially Implemented | Other Than Satisfied | POAM-TDPW1-003: 6 open STIG findings | Moderate |
+| SI-4 | Partially Implemented | Not in SCA sample | POAM-TDPW1-004: no centralized monitoring | Moderate |
+| IA-5 | Implemented | Not in SCA sample | POAM-TDPW1-005: admin password not rotated in 60 days | Low |
+| MP-5 | Not documented in SSP | Not in SCA sample | POAM-TDPW1-006: media control log gaps | Moderate |
+| AU-8 | Implemented | Other Than Satisfied (6-minute clock drift) | POAM-TDPW1-007 | Low |
+
+AU-8 shows the normal gap between documented and observed state. The SSP describes the synchronization procedure as implemented, but the assessment found it hadn't been performed on schedule. An SSP update after the assessment would normally record that result.
+
+---
+
+## Why this project
+
+The package demonstrates the core work products of an ISSO or GRC analyst supporting a DoD authorization:
+
+- Applying FIPS 199 categorization.
+- Selecting and tailoring an SP 800-53 baseline.
+- Writing control implementation statements in assessor-ready language.
+- Turning assessment results into a tracked POA&M.
+
+It pairs with [windows11-stig-hardening-lab](https://github.com/lattimorede23/windows11-stig-hardening-lab), a hands-on STIG assessment of a Windows 11 VM. That lab is real work on a different system; TDPW-1 is a fictional system described on paper.
+
+---
+
+## Revision history
+
+**v1.1 (2026-10-14).** Corrections only. No findings, controls, or assessment results were added or removed.
+
+1. **Replaced retired markings.** DoDI 5200.48 (2020) replaced the "For Official Use Only" (FOUO) and "Sensitive But Unclassified" (SBU) markings with Controlled Unclassified Information (CUI). Document markings now read as a simulated CUI marking, and the data descriptions say CUI.
+2. **Updated the instruction reference.** AFI 17-101 references now read DAFI 17-101, the current Department of the Air Force issuance.
+3. **Corrected the SSP status for IA-2** from Implemented to Partially Implemented. The control's own narrative documents the MFA deviation as an open POA&M item, and the SCA rates it Other Than Satisfied.
+4. **Corrected the SSP control count** from 20 to 21. The summary table lists 21 controls.
+5. **Replaced an inaccurate traceability claim.** The README said the SSP's "Partially Implemented" controls are exactly the SCA's Other Than Satisfied controls, which was not accurate. It is replaced with the traceability table above.
+
+**v1.0 (2026-07-01).** Original package. Available in the git history at commit `59f5d08`.
+
+---
 
 ## Disclaimer
 
-This is a training and portfolio artifact only. The system, organization, personnel, and findings described are entirely fictional and do not represent any actual Air Force system, unit, or individual.
+This is a training and portfolio artifact only. The system, organization, personnel, and findings are fictional and do not represent any actual Air Force system, unit, or person.
+
+**Author:** Derrick Lattimore Jr. · B.S. Information Security, Shawnee State University · CompTIA Security+
